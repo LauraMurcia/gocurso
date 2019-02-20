@@ -1,6 +1,7 @@
 package holamundo
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 )
@@ -45,8 +46,23 @@ func getVariables() (int, int32, int64) {
 	return 1, 2, 3
 }
 
+//Suma2 suma con errors
+func Suma2(a interface{}, b interface{}) (int, error) {
+
+	switch a.(type) { //a t le asigno tipo de dato de a
+	case string:
+		return 0, errors.New("El valor A es un string")
+	}
+
+	switch b.(type) {
+	case string:
+		return 0, errors.New("El valor B es un string")
+	}
+	return a.(int) + b.(int), nil
+}
+
 func sum(a int, b int) int {
-	return (a + b)
+	return a + b
 }
 
 func getArray() {
